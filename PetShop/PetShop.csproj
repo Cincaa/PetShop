@@ -130,6 +130,7 @@
     <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\HamstersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataAccessLayer\DbCtx.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -137,6 +138,7 @@
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Hamster.cs" />
+    <Compile Include="Models\Toy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

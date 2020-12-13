@@ -11,6 +11,7 @@ namespace PetShop.Models
 
         public string Breed { get; set; }
         public List<Food> Food { get; set; }
+        public List<Toy> Toys { get; set; }
 
     }
 }
