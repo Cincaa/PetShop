@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Cage";
+}
+
+@foreach (var cage in ViewBag.Cages)
+{
+    <div class="panel-body">
+
+        <p>Id: @cage.Id</p>
+
+        <p>Size: @cage.Size</p>
+
+        <p>Color: @cage.Color</p>
+    </div>
+}

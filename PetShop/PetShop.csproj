@@ -127,17 +127,21 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CageController.cs" />
     <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\HamstersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="DataAccessLayer\DbCtx.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Cage.cs" />
     <Compile Include="Models\Fish.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Hamster.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\Toy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -185,6 +189,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Fish\Fish.cshtml" />
+    <Content Include="Views\Locations\Location.cshtml" />
+    <Content Include="Views\Hamsters\New.cshtml" />
+    <Content Include="Views\Shared\_Cage.cshtml" />
+    <Content Include="Views\Shared\_Food-Hamsters.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

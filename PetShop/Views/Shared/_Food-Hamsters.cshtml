@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Food";
+}
+
+@foreach (var food in ViewBag.Food)
+{
+    if(food.CanBeEatenByHamster == true)
+    {
+        <div class="panel-body">
+
+            <p>Id: @food.Id</p>
+
+            <p>Name: @food.ProductName</p>
+
+        </div>
+    }
+}

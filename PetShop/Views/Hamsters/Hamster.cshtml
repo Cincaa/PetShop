@@ -1,17 +1,27 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Hamster";
 }
 
-<h2>Aici vor fi hamsterii</h2>
+<body>
+<br/>
 
-@* @foreach (var hamster in ViewBag.Hamsters) *@
-@* { *@
-@*     <div class="panel-body"> *@
-@*         @Html.Label("Id:", "Breed:") *@
-@*         <br /> *@
-@*         <p>@hamster.Id</p> *@
-@*         <br /> *@
-@*         <p>@hamster.Breed</p> *@
-@*     </div> *@
-@* } *@
+@foreach (var hamster in ViewBag.Hamsters)
+{
+    <div class="panel-body">
+        @Html.Label("Id:")
+        <br/>
+        <p>@hamster.Id</p>
+        <br/>
+        @Html.Label("Breed:")
+        <p>@hamster.Breed</p>
+        <br/>
+        @Html.Label("Potential cages:")
+        @Html.Partial("_Cage")
+        <br/>
+        @Html.Label("Potential Food: ")
+        @Html.Partial("_Food-Hamsters")
+
+    </div>
+}
+
+</body>
