@@ -39,8 +39,6 @@ namespace PetShop.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    // newHamster.Publisher = db.Publishers
-                    //     .FirstOrDefault(p => p.PublisherId.Equals(1));
                     db.Hamsters.Add(newHamster);
                     db.SaveChanges();
                     return RedirectToAction("Hamster");
@@ -53,6 +51,61 @@ namespace PetShop.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Edit(int? id)
+        {
+            if (id.HasValue)
+            {
+                Hamster hamster = db.Hamsters.Find(id);
+                if (hamster == null)
+                {
+                    return HttpNotFound("Couldn't find the hamster with id " + id.ToString());
+                }
+                return View(hamster);
+            }
+            return HttpNotFound("Missing hamster id parameter!");
+        }
+
+        [HttpPut]
+        public ActionResult Edit(int id, Hamster hamsterRequest)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Hamster hamster = db.Hamsters
+                        .Include("Cage")
+                        .SingleOrDefault(b => b.Id.Equals(id));
+                    if (TryUpdateModel(hamster))
+                    {
+                        hamster.Breed = hamsterRequest.Breed;
+                        hamster.Cage = hamsterRequest.Cage;
+                        hamster.Food = hamsterRequest.Food;
+                        hamster.Toys = hamsterRequest.Toys;
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("Hamster");
+                }
+                return View(hamsterRequest);
+            }
+            catch (Exception e)
+            {
+                return View(hamsterRequest);
+            }
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            Hamster hamster = db.Hamsters.Find(id);
+            if (hamster != null)
+            {
+                db.Hamsters.Remove(hamster);
+                db.SaveChanges();
+                return RedirectToAction("Hamster");
+            }
+            return HttpNotFound("Couldn't find the hamster with id " + id.ToString());
+        }
     }
-    // TODO: Implement CRUD 
+    // TODO: Implement CRUD also for one-to-many
 }

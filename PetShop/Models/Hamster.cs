@@ -8,6 +8,7 @@ namespace PetShop.Models
     {
         [Key]
         [Column("Hamster_Id")]
+        [Display(Name= "Hamster Id:")]
         public int Id { get; set; }
         [MaxLength(20, ErrorMessage = "Breed cannot be longer than 20 characters")]
         public string Breed { get; set; }

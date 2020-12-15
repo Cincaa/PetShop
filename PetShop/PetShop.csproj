@@ -146,10 +146,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\PetShopDB.mdf" />
-    <Content Include="App_Data\PetShopDB_log.ldf">
-      <DependentUpon>PetShopDB.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -193,8 +189,12 @@
     <Content Include="Views\Hamsters\New.cshtml" />
     <Content Include="Views\Shared\_Cage.cshtml" />
     <Content Include="Views\Shared\_Food-Hamsters.cshtml" />
+    <Content Include="Views\Hamsters\Edit.cshtml" />
+    <Content Include="Views\Hamsters\Delete.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

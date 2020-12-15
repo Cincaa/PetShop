@@ -11,13 +11,25 @@
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm(actionName: "New", controllerName: "Hamsters", method: FormMethod.Post))
 {
-    @Html.Label( "Breed: ")
+    
+    @Html.Label("Breed: ")
     <br />
     @Html.TextBoxFor(b => b.Breed, null, new { placeholder = "Type in the hamster's breed", @class = "form-control" })
     @Html.ValidationMessageFor(b => b.Breed, "", new { @class = "text-danger" })
     <br />
-    
+
+    @Html.Label("Cage Size: ")
+    <br />
+    @Html.DropDownList("CageSize", new SelectList(new List<string>() { "Small", "Medium", "Large" }, "Size"), "", new { placeholder = "Type in the hamster's cage size", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Cage.Size, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Cage Color: ")
+    <br />
+    @Html.DropDownList("CageColor", new SelectList(new List<string>() { "Red", "Green", "Yellow", "Black", "White", "Orange", "Blue" }, "Color"), "", new { placeholder = "Type in the hamster's cage size", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Cage.Color, "", new { @class = "text-danger" })
+    <br />
+
     <button class="btn btn-primary" type="submit">Create</button>
 }
 
-@* TODO: Finish NewView *@

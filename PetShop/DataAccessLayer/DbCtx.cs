@@ -13,6 +13,21 @@ namespace PetShop.DataAccessLayer
         {
             Database.SetInitializer<DbCtx>(new Initp());
         }
+
+        // protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        // {
+        //
+        //     modelBuilder.Entity<Hamster>()
+        //         .HasMany<Food>(s => s.Food)
+        //         .WithMany(c => c.Hamsters)
+        //         .Map(cs =>
+        //         {
+        //             cs.MapLeftKey("HmasterRefId");
+        //             cs.MapRightKey("FoodRefId");
+        //             cs.ToTable("Hamsters");
+        //         });
+        //
+        // }
         public DbSet<Hamster> Hamsters { get; set; }
         public DbSet<Fish> Fish { get; set; }
         public DbSet<Cage> Cages { get; set; }
@@ -21,8 +36,10 @@ namespace PetShop.DataAccessLayer
         public DbSet<Address> Addresses { get; set; }
     }
 
-    public class Initp : DropCreateDatabaseAlways<DbCtx>
+
+    public class Initp : CreateDatabaseIfNotExists<DbCtx>
     {
+        //DropCreateDatabaseAlways
         protected override void Seed(DbCtx ctx)
         {
             ctx.Hamsters.Add(new Hamster
