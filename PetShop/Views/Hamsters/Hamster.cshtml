@@ -7,22 +7,30 @@
 
 @foreach (var hamster in ViewBag.Hamsters)
 {
-    <div class="panel-body">
-        @Html.Label("Id:")
-        <br/>
-        <p>@hamster.Id</p>
-        <br/>
-        @Html.Label("Breed:")
-        <p>@hamster.Breed</p>
-        <br/>
-        @Html.Label("Potential cages:")
-        @Html.Partial("_Cage")
-        
-        <br/>
-        @Html.Label("Potential Food: ")
-        @Html.Partial("_Food-Hamsters")
+<div class="panel-body">
+    @Html.Label("Id:")
+    <br />
+    <p>@hamster.Id</p>
+    <br />
 
-    </div>
+
+    @Html.Label("Breed:")
+    <li> Name: @hamster.Breed.Name</li>
+    <li> Size: @hamster.Breed.Size</li>
+    <li> Color: @hamster.Breed.Color</li>
+    @* @Html.Partial("_Breed") *@
+
+
+
+    <br />
+    @Html.Label("Potential Food: ")
+    @Html.Partial("_Food-Hamsters")
+
+    @Html.Label("Has Cage:")
+    <p>@hamster.HasCage</p>
+    <br />
+</div>
 }
 
 </body>
+@* TODO: modify views because I added new models *@

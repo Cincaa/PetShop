@@ -127,8 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CageController.cs" />
-    <Compile Include="Controllers\FishController.cs" />
+    <Compile Include="Controllers\BreedsController.cs" />
     <Compile Include="Controllers\HamstersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
@@ -137,8 +136,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\Cage.cs" />
-    <Compile Include="Models\Fish.cs" />
+    <Compile Include="Models\Breed.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\Hamster.cs" />
     <Compile Include="Models\Location.cs" />
@@ -184,13 +182,13 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Fish\Fish.cshtml" />
     <Content Include="Views\Locations\Location.cshtml" />
     <Content Include="Views\Hamsters\New.cshtml" />
-    <Content Include="Views\Shared\_Cage.cshtml" />
+    <Content Include="Views\Shared\_Breed.cshtml" />
     <Content Include="Views\Shared\_Food-Hamsters.cshtml" />
     <Content Include="Views\Hamsters\Edit.cshtml" />
     <Content Include="Views\Hamsters\Delete.cshtml" />
+    <Content Include="Views\Breeds\Breeds.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

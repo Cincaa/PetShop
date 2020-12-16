@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace PetShop.Models
 {
@@ -10,16 +11,21 @@ namespace PetShop.Models
         [Column("Hamster_Id")]
         [Display(Name= "Hamster Id:")]
         public int Id { get; set; }
-        [MaxLength(20, ErrorMessage = "Breed cannot be longer than 20 characters")]
-        public string Breed { get; set; }
-
+        public bool HasCage { get; set; }
         //many-to-one
-        public Cage Cage { get; set; }
+        public int BreedId { get; set; }
+        public virtual Breed Breed { get; set; }
 
         //many-to-many
-        public List<Food> Food { get; set; }
+        public virtual List<Food> Food { get; set; }
         //one-to-many
-        public List<Toy> Toys { get; set; }
+        public int ToyId { get; set; }
+        public virtual List<Toy> Toys { get; set; }
+
+        [NotMapped]
+        public IEnumerable<SelectListItem> BreedSizeList { get; set; }
+        [NotMapped]
+        public IEnumerable<SelectListItem> BreedColorList { get; set; }
     }
     
 }

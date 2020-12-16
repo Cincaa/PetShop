@@ -10,10 +10,9 @@ namespace PetShop.Models
         public int Id { get; set; }
 
         public string ProductName { get; set; }
-        public bool CanBeEatenByFish { get; set; }
-        public bool CanBeEatenByHamster { get; set; }
+        public bool Diet { get; set; }
 
          public List<Hamster> Hamsters  { get; set; }
-         public List<Fish> Fishes { get; set; }
+         public List<Breed> Fishes { get; set; }
     }
 }

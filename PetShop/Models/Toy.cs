@@ -9,6 +9,7 @@ namespace PetShop.Models
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
+        public virtual Hamster hamster { get; set; }
 
     }
 }

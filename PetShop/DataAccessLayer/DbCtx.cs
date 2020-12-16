@@ -29,8 +29,7 @@ namespace PetShop.DataAccessLayer
         //
         // }
         public DbSet<Hamster> Hamsters { get; set; }
-        public DbSet<Fish> Fish { get; set; }
-        public DbSet<Cage> Cages { get; set; }
+        public DbSet<Breed> Breeds { get; set; }
         public DbSet<Food> Food { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Address> Addresses { get; set; }
@@ -45,10 +44,10 @@ namespace PetShop.DataAccessLayer
             ctx.Hamsters.Add(new Hamster
             {
                 Id = 1,
-                Breed = "Rasa Pura",
-                Cage = new Cage
+                HasCage = true,
+                Breed = new Breed
                 {
-                    
+                    Name = "Rasa 1",
                     Size = "Medium",
                     Color = "Red"
                 },
@@ -56,10 +55,9 @@ namespace PetShop.DataAccessLayer
                 {
                     new Food
                     {
-                        
+
                         ProductName = "ProHamster",
-                        CanBeEatenByFish = false,
-                        CanBeEatenByHamster = true
+                        Diet = false
 
                     }
                 },
@@ -67,26 +65,26 @@ namespace PetShop.DataAccessLayer
                 Toys = new List<Toy>{
                     new Toy
                     {
-                        
+
                         ProductName = "Wheel"
                     }
                 }
             });
 
-            ctx.Cages.Add(new Cage()
-            {
-                
-                Size = "Small",
-                Color = "Green"
-            }
-            );
+            // ctx.Breeds.Add(new Breed()
+            // {
+            //     Name = "Rasa2",
+            //     Size = "Small",
+            //     Color = "Green"
+            // }
+            // );
 
             ctx.Locations.Add(new Location
             {
                 Id = 1,
                 Address = new Address
                 {
-                    Id = 001,
+                    Id = 1,
                     City = "Bucharest",
                     Street = "Ciobanasului",
                     Number = 65

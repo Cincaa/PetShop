@@ -5,14 +5,23 @@
 
 @foreach (var food in ViewBag.Food)
 {
-    if(food.CanBeEatenByHamster == true)
-    {
+    
         <div class="panel-body">
 
             <p>Id: @food.Id</p>
 
             <p>Name: @food.ProductName</p>
+            
+            @if (food.Diet == true)
+            {
+                <p>Diet: yes</p>
+            }
+            else
+            {
+                <p>Diet: no</p>
+            }
+                
 
         </div>
-    }
+    
 }

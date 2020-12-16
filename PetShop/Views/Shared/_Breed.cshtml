@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Breed";
+}
+
+
+@foreach (var breed in ViewBag.Breeds)
+{
+    <div class="panel-body">
+
+        <p>Name: @breed.Name</p>
+
+        <p>Size: @breed.Size</p>
+
+        <p>Color: @breed.Color</p>
+    </div>
+}
