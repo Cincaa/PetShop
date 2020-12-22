@@ -9,6 +9,7 @@ namespace PetShop.Models
 {
     public class Address
     {
+        [ForeignKey("Location")]
         [Column("Location_Id")]
         [Required]
         public int Id { get; set; }
@@ -17,5 +18,8 @@ namespace PetShop.Models
         public string Street { get; set; }
 
         public int Number { get; set; }
+        public int PostalCode { get; set; }
+
+        public Location Location { get; set; }
     }
 }

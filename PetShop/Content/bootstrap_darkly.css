@@ -3006,6 +3006,7 @@ select[multiple].input-lg {
   -ms-user-select: none;
   user-select: none;
 }
+
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
@@ -4911,7 +4912,7 @@ a.badge:focus {
 }
 .jumbotron p {
   margin-bottom: 15px;
-  font-size: 23px;
+  font-size: 5px;
   font-weight: 200;
 }
 .jumbotron > hr {

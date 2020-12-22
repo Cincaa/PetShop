@@ -5,9 +5,7 @@
 
 
 @model PetShop.Models.Hamster
-@{
-    ViewBag.Title = "Create";
-}
+
 <h2>@ViewBag.Title</h2>
 @using (Html.BeginForm(actionName: "New", controllerName: "Hamsters", method: FormMethod.Post))
 {

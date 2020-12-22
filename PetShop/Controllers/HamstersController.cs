@@ -1,5 +1,4 @@
 ﻿using System;
-using PetShop.DataAccessLayer;
 using PetShop.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +8,43 @@ namespace PetShop.Controllers
 {
     public class HamstersController : Controller
     {
-        private DbCtx db = new DbCtx();
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Hamsters
 
-        public ActionResult Hamster()
+        protected override void Dispose(bool disposing)
         {
-            List<Hamster> hamsters = db.Hamsters.ToList();
-            List<Breed> breeds = db.Breeds.ToList();
-            List<Food> food = db.Food.ToList();
-            
-            ViewBag.Hamsters = hamsters;
-            ViewBag.Breeds =  breeds;
-            ViewBag.Food = food;
-
-            return View();
+            db.Dispose();
         }
+        
+        public ActionResult Index(int? id)
+        {
+
+            if (!id.HasValue)
+            {
+                List<Hamster> hamsters = db.Hamsters.ToList();
+                List<Breed> breeds = db.Breeds.ToList();
+                List<Food> food = db.Food.ToList();
+
+                ViewBag.Hamsters = hamsters;
+                ViewBag.Breeds = breeds;
+                ViewBag.Food = food;
+
+                return View();
+            }
+            else
+            {
+                Hamster hamsters = db.Hamsters.Find(id);
+                Breed breeds = db.Breeds.Find(hamsters.BreedId);
+                List<Food> food = db.Food.ToList();
+
+                ViewBag.Hamsters = new List<Hamster>() {hamsters};
+                ViewBag.Breeds = breeds;
+                ViewBag.Food = food;
+
+                return View();
+            }
+        }
+
         [HttpGet]
         public ActionResult New()
         {
@@ -44,7 +65,7 @@ namespace PetShop.Controllers
                 {
                     db.Hamsters.Add(newHamster);
                     db.SaveChanges();
-                    return RedirectToAction("Hamster");
+                    return RedirectToAction("Index");
                 }
                 return View(newHamster);
             }
@@ -69,6 +90,7 @@ namespace PetShop.Controllers
                 }
                 return View(hamster);
             }
+            
             return HttpNotFound("Missing hamster id parameter!");
         }
 
@@ -90,7 +112,7 @@ namespace PetShop.Controllers
                         hamster.Toys = hamsterRequest.Toys;
                         db.SaveChanges();
                     }
-                    return RedirectToAction("Hamster");
+                    return RedirectToAction("Index");
                 }
                 return View(hamsterRequest);
             }
@@ -108,7 +130,7 @@ namespace PetShop.Controllers
             {
                 db.Hamsters.Remove(hamster);
                 db.SaveChanges();
-                return RedirectToAction("Hamster");
+                return RedirectToAction("Index");
             }
             return HttpNotFound("Couldn't find the hamster with id " + id.ToString());
         }
@@ -169,5 +191,4 @@ namespace PetShop.Controllers
             return selectList;
         }
     }
-    // TODO: Implement CRUD also for one-to-many and many-to-many(lab4)
 }

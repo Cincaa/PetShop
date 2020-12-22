@@ -8,7 +8,7 @@ using System.Web;
 namespace PetShop.Models
 {
     public class Location
-    {
+    {   
         [Column("Location_Id")]
         [Required]
         public int Id{ get; set; }
