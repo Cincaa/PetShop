@@ -1,10 +1,7 @@
-﻿using System;
+﻿using PetShop.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-
-using PetShop.Models;
 
 namespace PetShop.Controllers
 {
@@ -15,9 +12,9 @@ namespace PetShop.Controllers
         public ActionResult Breed()
         {
             List<Breed> breeds = db.Breeds.ToList();
-                ViewBag.Breeds = breeds;
-                return PartialView("_Breed");
-            
+            ViewBag.Breeds = breeds;
+            return PartialView("_Breed");
+
         }
     }
 }

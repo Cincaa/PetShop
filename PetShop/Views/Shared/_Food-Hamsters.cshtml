@@ -2,26 +2,30 @@
 @{
     ViewBag.Title = "Food";
 }
-
+@{ int count = 0; }
 @foreach (var food in ViewBag.Food)
 {
-    
+
+    if (count < 3)
+    {
         <div class="panel-body">
 
-            <p>Id: @food.Id</p>
+            <p style="font-size: 13px;">Id: @food.Id</p>
 
-            <p>Name: @food.ProductName</p>
-            
+            <p style="font-size: 13px;">Name: @food.ProductName</p>
+
             @if (food.Diet == true)
             {
-                <p>Diet: yes</p>
+                <p style="font-size: 13px;">Diet: yes</p>
             }
             else
             {
-                <p>Diet: no</p>
+                <p style="font-size: 13px;">Diet: no</p>
             }
-                
+
 
         </div>
-    
+    }
+    count++;
+
 }

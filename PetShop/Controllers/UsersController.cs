@@ -1,15 +1,13 @@
-﻿using PetShop.Models;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PetShop.Models;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PetShop.Controllers
-{ 
+{
     // poate fi accesat doar de catre Admin
     [Authorize(Roles = "Admin")]
     public class UsersController : Controller

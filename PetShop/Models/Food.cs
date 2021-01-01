@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace PetShop.Models
 {
@@ -12,7 +9,7 @@ namespace PetShop.Models
         public string ProductName { get; set; }
         public bool Diet { get; set; }
 
-         public List<Hamster> Hamsters  { get; set; }
-         public List<Breed> Fishes { get; set; }
+        public List<Hamster> Hamsters { get; set; }
+        public List<Breed> Fishes { get; set; }
     }
 }

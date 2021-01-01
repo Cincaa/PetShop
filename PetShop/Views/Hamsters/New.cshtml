@@ -6,8 +6,8 @@
 
 @model PetShop.Models.Hamster
 
-<h2>@ViewBag.Title</h2>
-@using (Html.BeginForm(actionName: "New", controllerName: "Hamsters", method: FormMethod.Post))
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Hamsters", method: FormMethod.Post, htmlAttributes:new { enctype = "multipart/form-data" }))
 {
 
     @Html.Label("Breed: ")
@@ -26,17 +26,17 @@
     @Html.ValidationMessageFor(b => b.Breed.Color, "", new { @class = "text-danger" })
     <br />
 
-@*     @Html.Label("Food: ") *@
-@*     <br /> *@
-@*     @Html.TextBoxFor(b => b.Food.ProductName, null, new { placeholder = "Type in the hamster's food", @class = "form-control" }) *@
-@*     @Html.ValidationMessageFor(b => b.Food, "", new { @class = "text-danger" }) *@
-@*     <br /> *@
-@* *@
-@*     @Html.Label("Toy: ") *@
-@*     <br /> *@
-@*     @Html.TextBoxFor(b => b.Toys.ProuctName, null, new { placeholder = "Type in the hamster's toy", @class = "form-control" }) *@
-@*     @Html.ValidationMessageFor(b => b.Toys, "", new { @class = "text-danger" }) *@
-@*     <br /> *@
+    @*     @Html.Label("Food: ") *@
+    @*     <br /> *@
+    @*     @Html.TextBoxFor(b => b.Food.ProductName, null, new { placeholder = "Type in the hamster's food", @class = "form-control" }) *@
+    @*     @Html.ValidationMessageFor(b => b.Food, "", new { @class = "text-danger" }) *@
+    @*     <br /> *@
+    @* *@
+    @*     @Html.Label("Toy: ") *@
+    @*     <br /> *@
+    @*     @Html.TextBoxFor(b => b.Toys.ProuctName, null, new { placeholder = "Type in the hamster's toy", @class = "form-control" }) *@
+    @*     @Html.ValidationMessageFor(b => b.Toys, "", new { @class = "text-danger" }) *@
+    @*     <br /> *@
 
     @Html.Label("Has cage? ")
     <br />
@@ -44,6 +44,7 @@
     @Html.ValidationMessageFor(b => b.HasCage, "", new { @class = "text-danger" })
     <br />
 
+    <input type="file" id="image1" name="image1" />
     <button class="btn btn-primary" type="submit">Create</button>
 }
 

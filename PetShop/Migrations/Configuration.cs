@@ -1,24 +1,21 @@
-﻿using System.Collections.Generic;
-using PetShop.Models;
+﻿using PetShop.Models;
+using System.Collections.Generic;
+using System.IO;
 
 namespace PetShop.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<PetShop.Models.ApplicationDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(PetShop.Models.ApplicationDbContext ctx)
         {
-            
-            ctx.Hamsters.Add(new Hamster
+            Hamster hamster1 = new Hamster
             {
                 Id = 1,
                 HasCage = true,
@@ -45,16 +42,15 @@ namespace PetShop.Migrations
 
                         ProductName = "Wheel"
                     }
-                }
-            });
+                },
 
-            // ctx.Breeds.Add(new Breed()
-            // {
-            //     Name = "Rasa2",
-            //     Size = "Small",
-            //     Color = "Green"
-            // }
-            // );
+                Image = File.ReadAllBytes("C: \\Users\\adria\\Desktop\\Facultate\\Anul 3\\Semestrul 1\\DAW\\PetShop\\PetShop\\Images\\1.jpg")
+
+            };
+
+            ctx.Hamsters.Add(hamster1);
+
+
 
             ctx.Locations.Add(new Location
             {

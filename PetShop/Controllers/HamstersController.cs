@@ -1,7 +1,8 @@
-﻿using System;
-using PetShop.Models;
+﻿using PetShop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
 namespace PetShop.Controllers
@@ -15,7 +16,7 @@ namespace PetShop.Controllers
         {
             db.Dispose();
         }
-        
+
         public ActionResult Index(int? id)
         {
 
@@ -37,7 +38,7 @@ namespace PetShop.Controllers
                 Breed breeds = db.Breeds.Find(hamsters.BreedId);
                 List<Food> food = db.Food.ToList();
 
-                ViewBag.Hamsters = new List<Hamster>() {hamsters};
+                ViewBag.Hamsters = new List<Hamster>() { hamsters };
                 ViewBag.Breeds = breeds;
                 ViewBag.Food = food;
 
@@ -55,14 +56,22 @@ namespace PetShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(Hamster newHamster)
+        public ActionResult New(Hamster newHamster, HttpPostedFileBase image1)
         {
             newHamster.BreedSizeList = GetAllSizes();
             newHamster.BreedColorList = GetAllColors();
+
+            if (image1 != null)
+            {
+                newHamster.Image = new byte[image1.ContentLength];
+                image1.InputStream.Read(newHamster.Image, 0, image1.ContentLength);
+            }
+
             try
             {
                 if (ModelState.IsValid)
                 {
+
                     db.Hamsters.Add(newHamster);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -90,12 +99,12 @@ namespace PetShop.Controllers
                 }
                 return View(hamster);
             }
-            
+
             return HttpNotFound("Missing hamster id parameter!");
         }
 
         [HttpPut]
-        public ActionResult Edit(int id, Hamster hamsterRequest)
+        public ActionResult Edit(int id, Hamster hamsterRequest, HttpPostedFileBase image1)
         {
             try
             {
@@ -110,6 +119,11 @@ namespace PetShop.Controllers
                         hamster.HasCage = hamsterRequest.HasCage;
                         hamster.Food = hamsterRequest.Food;
                         hamster.Toys = hamsterRequest.Toys;
+                        if (image1 != null)
+                        {
+                            hamster.Image = new byte[image1.ContentLength];
+                            image1.InputStream.Read(hamster.Image, 0, image1.ContentLength);
+                        }
                         db.SaveChanges();
                     }
                     return RedirectToAction("Index");
@@ -140,11 +154,11 @@ namespace PetShop.Controllers
         {
             var selectList = new List<SelectListItem>();
 
-                selectList.Add(new SelectListItem
-                {
-                    Value = "Small",
-                    Text = "Small"
-                });
+            selectList.Add(new SelectListItem
+            {
+                Value = "Small",
+                Text = "Small"
+            });
 
             selectList.Add(new SelectListItem
             {

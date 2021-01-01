@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Images";
+}
+
+@foreach (var image in ViewBag.Images)
+{
+    <img src="@image.path" class="rounded float-right" >
+}
