@@ -1,0 +1,38 @@
+﻿@using System.Data.Entity.Infrastructure.Design
+@model PetShop.Models.Breed
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Breeds", method: FormMethod.Post, htmlAttributes: new {enctype = "multipart/form-data"}))
+
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <!--camp ascuns pentru a retine id-ul obiectului-->
+    @Html.HiddenFor(b => b.BreedId)
+
+    <br/>
+    @Html.Label("Breed name", "Breed name: ")
+    <br/>
+    @Html.EditorFor(b => b.Name, new {htmlAttributes = new {@class = "form-control"}})
+    @Html.ValidationMessageFor(b => b.Name, "", new {@class = "text-danger"})
+    <br/>
+
+    <br/>
+    @Html.Label("Breed Size", "Breed size: ")
+    <br/>
+    @Html.DropDownListFor(b => b.Size, new SelectList(Model.BreedSizeList, "Value", "Text"), "", new {@class = "form-control"})
+    @Html.ValidationMessageFor(b => b.Size, "", new {@class = "text-danger"})
+
+    <br/>
+    @Html.Label("Breed Color", "Breed color: ")
+    <br/>
+    @Html.DropDownListFor(b => b.Color, new SelectList(Model.BreedColorList, "Value", "Text"), " ", new {@class = "form-control"})
+    @Html.ValidationMessageFor(b => b.Color, "", new {@class = "text-danger"})
+    <br/>
+
+    <input type="file" id="image2" name="image2"/>
+    <br/>
+    <button class="btn btn-primary" type="submit">Update</button>
+}

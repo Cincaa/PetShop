@@ -28,8 +28,11 @@ namespace PetShop.Models
         public DbSet<Hamster> Hamsters { get; set; }
         public DbSet<Breed> Breeds { get; set; }
         public DbSet<Food> Food { get; set; }
+
         public DbSet<Location> Locations { get; set; }
-        public DbSet<Address> Adresses { get; set; }
+
+        public DbSet<Toy> Toys { get; set; }
+        public DbSet<Address> Addresses { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

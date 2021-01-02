@@ -10,6 +10,5 @@ namespace PetShop.Models
         public bool Diet { get; set; }
 
         public List<Hamster> Hamsters { get; set; }
-        public List<Breed> Fishes { get; set; }
     }
 }

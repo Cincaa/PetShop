@@ -4,80 +4,80 @@
 }
 
 <body>
-<br/>
-@foreach (var hamster in ViewBag.Hamsters)
-{
-    <div style="max-width: 95%;" class="jumbotron">
-
-        @{
-            var base64 = Convert.ToBase64String(hamster.Image);
-            var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-        }
-        <img src='@imgsrc' style="max-width: 100px; max-height: 100px"/>
-
-        <h1 style="font-size: 45px;" class="display-3">@hamster.Breed.Name</h1>
-        @Html.Label("Id:")
-        <br/>
-        <p style="font-size: 15px;">@hamster.Id</p>
-        @Html.Label("Breed characteristics:")
-        <li> Size: @hamster.Breed.Size</li>
-        <li> Color: @hamster.Breed.Color</li>
-        <br/>
-        @Html.Label("Potential Food: ")
-        @Html.Partial("_Food-Hamsters")
-        <br/>
-        @Html.Label("Has Cage:")
-        <p style="font-size: 15px;">@hamster.HasCage</p>
-
-
-        @if (ViewBag.Hamsters.Count > 1)
-        {
-            <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Hamsters", new {id = hamster.Id})" role="button">Details</a>
-        }
-
-
-    </div>
-}
-
-@* @foreach (var hamster in ViewBag.Hamsters) *@
-@*     { *@
-@* <div class="panel-body"> *@
-@*     @Html.Label("Id:") *@
-@*     <br /> *@
-@*      *@
-@*     <p>@hamster.Id</p> *@
-@*     <br /> *@
-@* *@
-@* *@
-@*     @Html.Label("Breed:") *@
-@*     <li> Name: @hamster.Breed.Name</li> *@
-@*     <li> Size: @hamster.Breed.Size</li> *@
-@*     <li> Color: @hamster.Breed.Color</li> *@
-@*     $1$ @Html.Partial("_Breed") #1# *@
-@* *@
-@* *@
-@* *@
-@*     <br /> *@
-@*     @Html.Label("Potential Food: ") *@
-@*     @Html.Partial("_Food-Hamsters") *@
-@*     <br /> *@
-@*     @Html.Label("Has Cage:") *@
-@*     <p>@hamster.HasCage</p> *@
-@*     <br /> *@
-@* </div> *@
-@*     } *@
-
-<div style="position: absolute; right: 20px; top: 65px;">
-    <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'"/>
-    <br/>
-    <br/>
-    @if (ViewBag.Hamsters.Count == 1)
+    <br />
+    @foreach (var hamster in ViewBag.Hamsters)
     {
-        foreach (var hamster in ViewBag.Hamsters)
-        {
-            <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Hamsters", new {id = hamster.Id})'"/>
-        }
+        <div style="max-width: 95%;" class="jumbotron">
+
+            @{
+                var base64 = Convert.ToBase64String(hamster.Image);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <img src='@imgsrc' style="max-width: 100px; max-height: 100px" />
+
+            <h1 style="font-size: 45px;" class="display-3">@hamster.Breed.Name</h1>
+            @Html.Label("Id:")
+            <br />
+            <p style="font-size: 15px;">@hamster.Id</p>
+            @Html.Label("Breed characteristics:")
+            <li> Size: @hamster.Breed.Size</li>
+            <li> Color: @hamster.Breed.Color</li>
+            <br />
+            @Html.Label("Potential Food: ")
+            @Html.Partial("_Food-Hamsters")
+            <br />
+            @Html.Label("Has Cage:")
+            <p style="font-size: 15px;">@hamster.HasCage</p>
+
+
+            @if (ViewBag.Hamsters.Count > 1)
+            {
+                <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Hamsters", new {id = hamster.Id})" role="button">Details</a>
+            }
+
+
+        </div>
     }
-</div>
+
+    @* @foreach (var hamster in ViewBag.Hamsters) *@
+    @*     { *@
+    @* <div class="panel-body"> *@
+    @*     @Html.Label("Id:") *@
+    @*     <br /> *@
+    @*      *@
+    @*     <p>@hamster.Id</p> *@
+    @*     <br /> *@
+    @* *@
+    @* *@
+    @*     @Html.Label("Breed:") *@
+    @*     <li> Name: @hamster.Breed.Name</li> *@
+    @*     <li> Size: @hamster.Breed.Size</li> *@
+    @*     <li> Color: @hamster.Breed.Color</li> *@
+    @*     $1$ @Html.Partial("_Breed") #1# *@
+    @* *@
+    @* *@
+    @* *@
+    @*     <br /> *@
+    @*     @Html.Label("Potential Food: ") *@
+    @*     @Html.Partial("_Food-Hamsters") *@
+    @*     <br /> *@
+    @*     @Html.Label("Has Cage:") *@
+    @*     <p>@hamster.HasCage</p> *@
+    @*     <br /> *@
+    @* </div> *@
+    @*     } *@
+
+    <div style="position: absolute; right: 20px; top: 65px;">
+        <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'" />
+        <br />
+        <br />
+        @if (ViewBag.Hamsters.Count == 1)
+        {
+            foreach (var hamster in ViewBag.Hamsters)
+            {
+                <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Hamsters", new {id = hamster.Id})'" />
+            }
+        }
+    </div>
 
 </body>

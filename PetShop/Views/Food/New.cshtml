@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "New";
+}
+
+@model PetShop.Models.Food
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Food", method: FormMethod.Post))
+{
+
+    @Html.Label("Name: ")
+    <br />
+    @Html.TextBoxFor(b => b.ProductName, null, new { placeholder = "Type in the hamster's breed name", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.ProductName, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Diet? ")
+    <br />
+    @Html.CheckBoxFor(b => b.Diet, true)
+    @Html.ValidationMessageFor(b => b.Diet, "", new { @class = "text-danger" })
+    <br />
+
+    
+    <button class="btn btn-primary" type="submit">Create</button>
+}

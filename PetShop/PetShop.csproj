@@ -164,6 +164,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BreedsController.cs" />
+    <Compile Include="Controllers\FoodController.cs" />
     <Compile Include="Controllers\HamstersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
@@ -241,7 +242,7 @@
     <Content Include="Views\Shared\_Food-Hamsters.cshtml" />
     <Content Include="Views\Hamsters\Edit.cshtml" />
     <Content Include="Views\Hamsters\Delete.cshtml" />
-    <Content Include="Views\Breeds\Breeds.cshtml" />
+    <Content Include="Views\Breeds\Index.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
@@ -264,7 +265,11 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
-    <Content Include="Views\Shared\_ImageView.cshtml" />
+    <Content Include="Views\Breeds\New.cshtml" />
+    <Content Include="Views\Breeds\Edit.cshtml" />
+    <Content Include="Views\Food\Index.cshtml" />
+    <Content Include="Views\Food\New.cshtml" />
+    <Content Include="Views\Food\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

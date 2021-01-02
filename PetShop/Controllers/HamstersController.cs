@@ -136,12 +136,19 @@ namespace PetShop.Controllers
             }
         }
 
-        [HttpDelete]
+        
+        
         public ActionResult Delete(int id)
         {
             Hamster hamster = db.Hamsters.Find(id);
+            
             if (hamster != null)
             {
+                for (int i = 0; i < hamster.Toys.Count(); i++)
+                {
+                    Toy toy = db.Toys.Find(hamster.Toys[i].Id);
+                    db.Toys.Remove(toy);
+                }
                 db.Hamsters.Remove(hamster);
                 db.SaveChanges();
                 return RedirectToAction("Index");

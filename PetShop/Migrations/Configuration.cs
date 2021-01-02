@@ -23,7 +23,8 @@ namespace PetShop.Migrations
                 {
                     Name = "Rasa 1",
                     Size = "Medium",
-                    Color = "Red"
+                    Color = "Red",
+                    Image = File.ReadAllBytes("C: \\Users\\adria\\Desktop\\Facultate\\Anul 3\\Semestrul 1\\DAW\\PetShop\\PetShop\\Images\\1.jpg")
                 },
                 Food = new List<Food>
                 {
@@ -41,6 +42,7 @@ namespace PetShop.Migrations
                     {
 
                         ProductName = "Wheel"
+                        
                     }
                 },
 

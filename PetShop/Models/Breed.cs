@@ -15,9 +15,12 @@ namespace PetShop.Models
         public string Name { get; set; }
         public string Size { get; set; }
         public string Color { get; set; }
+        public byte[] Image { get; set; }
         public virtual IEnumerable<Hamster> Hamsters { get; set; }
 
         [NotMapped]
-        public IEnumerable<SelectListItem> SizeList { get; set; }
+        public IEnumerable<SelectListItem> BreedSizeList { get; set; }
+        [NotMapped]
+        public IEnumerable<SelectListItem> BreedColorList { get; set; }
     }
 }

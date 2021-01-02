@@ -4,7 +4,8 @@
     {
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public virtual Hamster hamster { get; set; }
+        
+        public Hamster hamster { get; set; }
 
     }
 }

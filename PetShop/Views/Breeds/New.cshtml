@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+@model PetShop.Models.Breed
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Breeds", method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+{
+
+    @Html.Label("Breed: ")
+    <br />
+    @Html.TextBoxFor(b => b.Name, null, new { placeholder = "Type in the hamster's breed name", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Name, "", new { @class = "text-danger" })
+    <br />
+
+    <br />
+    @Html.DropDownListFor(b => b.Size, new SelectList(Model.BreedSizeList, "Value", "Text"), "Choose breed size", new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Size, "", new { @class = "text-danger" })
+    <br />
+
+    <br />
+    @Html.DropDownListFor(b => b.Color, new SelectList(Model.BreedColorList, "Value", "Text"), "Choose breed color", new { @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Color, "", new { @class = "text-danger" })
+    <br />
+
+    <input type="file" id="image2" name="image2" />
+    <button class="btn btn-primary" type="submit">Create</button>
+}
+
