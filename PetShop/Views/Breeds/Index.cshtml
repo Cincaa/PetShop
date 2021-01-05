@@ -7,30 +7,31 @@
     <br />
     @foreach (var breed in ViewBag.Breeds)
     {
-        <div style="max-width: 95%;" class="jumbotron">
+        
+            <div style="max-width: 95%;" class="jumbotron">
 
-            @{
-                var base64 = Convert.ToBase64String(breed.Image);
-                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
-            }
-            <img src='@imgsrc' style="max-width: 100px; max-height: 100px" />
+                @{
+                    var base64 = Convert.ToBase64String(breed.Image);
+                    var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                }
+                <img src='@imgsrc' style="max-width: 100px; max-height: 100px"/>
 
-            <h1 style="font-size: 45px;" class="display-3">@breed.Name</h1>
-            @Html.Label("Id:")
-            <br />
-            <p style="font-size: 15px;">@breed.BreedId</p>
-            @Html.Label("Breed characteristics:")
-            <li> Size: @breed.Size</li>
-            <li> Color: @breed.Color</li>
-            <br />
+                <h1 style="font-size: 45px;" class="display-3">@breed.Name</h1>
+                @Html.Label("Id:")
+                <br/>
+                <p style="font-size: 15px;">@breed.BreedId</p>
+                @Html.Label("Breed characteristics:")
+                <li> Size: @breed.Size</li>
+                <li> Color: @breed.Color</li>
+                <br/>
 
-            @if (ViewBag.Breeds.Count > 1)
-            {
-                <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Breeds", new {id = breed.BreedId})" role="button">Details</a>
-            }
+                @if (ViewBag.Breeds.Count > 1)
+                {
+                    <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Breeds", new {id = breed.BreedId})" role="button">Details</a>
+                }
 
 
-        </div>
+            </div>
     }
 
 

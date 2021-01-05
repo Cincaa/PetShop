@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Location";
+}
+
+<h2>Aici vor fi punctele de lucru</h2>
+
+@foreach (var location in ViewBag.Locations) 
+ {
+    
+    <div >
+        @Html.Label("Id:")
+        <br />
+        <p>@location.Id</p>
+        <br />
+    </div>
+}

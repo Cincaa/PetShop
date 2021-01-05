@@ -1,83 +1,86 @@
 ﻿@using PetShop.Models
-@{
-    ViewBag.Title = "Hamster";
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hamsters</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+
+        .jumbotron {
+            margin-bottom: 0;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+    </style>
+</head>
 
 <body>
-    <br />
-    @foreach (var hamster in ViewBag.Hamsters)
-    {
-        <div style="max-width: 95%;" class="jumbotron">
 
-            @{
+
+
+    <br />
+    <div class="container">
+        <div class="row">
+
+            @foreach (var hamster in ViewBag.Hamsters)
+            {
+                
                 var base64 = Convert.ToBase64String(hamster.Image);
                 var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                <div class="col-sm-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"> @hamster.Breed.Name</div>
+                        <div class="panel-body">
+                            <img src='@imgsrc' class="img-responsive" style="width: 100%; height: 250px;" alt="Image">
+                        </div>
+                        <div class="panel-footer">
+                            <a class="btn btn-primary btn-lg btn-block" href="@Url.Action("Details", "Hamsters", new {id = hamster.Id})" role="button">Details</a>
+                        </div>
+                    </div>
+                </div>
             }
-            <img src='@imgsrc' style="max-width: 100px; max-height: 100px" />
-
-            <h1 style="font-size: 45px;" class="display-3">@hamster.Breed.Name</h1>
-            @Html.Label("Id:")
-            <br />
-            <p style="font-size: 15px;">@hamster.Id</p>
-            @Html.Label("Breed characteristics:")
-            <li> Size: @hamster.Breed.Size</li>
-            <li> Color: @hamster.Breed.Color</li>
-            <br />
-            @Html.Label("Potential Food: ")
-            @Html.Partial("_Food-Hamsters")
-            <br />
-            @Html.Label("Has Cage:")
-            <p style="font-size: 15px;">@hamster.HasCage</p>
-
-
-            @if (ViewBag.Hamsters.Count > 1)
-            {
-                <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Hamsters", new {id = hamster.Id})" role="button">Details</a>
-            }
-
-
         </div>
-    }
-
-    @* @foreach (var hamster in ViewBag.Hamsters) *@
-    @*     { *@
-    @* <div class="panel-body"> *@
-    @*     @Html.Label("Id:") *@
-    @*     <br /> *@
-    @*      *@
-    @*     <p>@hamster.Id</p> *@
-    @*     <br /> *@
-    @* *@
-    @* *@
-    @*     @Html.Label("Breed:") *@
-    @*     <li> Name: @hamster.Breed.Name</li> *@
-    @*     <li> Size: @hamster.Breed.Size</li> *@
-    @*     <li> Color: @hamster.Breed.Color</li> *@
-    @*     $1$ @Html.Partial("_Breed") #1# *@
-    @* *@
-    @* *@
-    @* *@
-    @*     <br /> *@
-    @*     @Html.Label("Potential Food: ") *@
-    @*     @Html.Partial("_Food-Hamsters") *@
-    @*     <br /> *@
-    @*     @Html.Label("Has Cage:") *@
-    @*     <p>@hamster.HasCage</p> *@
-    @*     <br /> *@
-    @* </div> *@
-    @*     } *@
-
-    <div style="position: absolute; right: 20px; top: 65px;">
-        <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'" />
-        <br />
-        <br />
-        @if (ViewBag.Hamsters.Count == 1)
-        {
-            foreach (var hamster in ViewBag.Hamsters)
-            {
-                <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Hamsters", new {id = hamster.Id})'" />
-            }
-        }
     </div>
+    <br>
+
+
+<div style="position: absolute; right: 20px; top: 65px;">
+    
+    <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'"/>
+    @foreach (var hamster in ViewBag.Hamsters)
+    {
+        if (ViewBag.Hamsters.Count == 1)
+        {
+            <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Hamsters", new {id = hamster.Id})'"/>
+        }
+    }
+    <br/>
+</div>
+
+    <footer class="container-fluid text-center">
+        <p>Online Store Copyright</p>
+        <form class="form-inline">
+            Get deals:
+            <input type="email" class="form-control" size="50" placeholder="Email Address">
+            <button type="button" class="btn btn-danger">Sign Up</button>
+        </form>
+    </footer>
 
 </body>
+</html>

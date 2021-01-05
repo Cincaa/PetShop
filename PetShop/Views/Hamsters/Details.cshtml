@@ -1,0 +1,86 @@
+﻿﻿@using PetShop.Models
+@{
+    ViewBag.Title = "Hamsters";
+}
+
+@foreach (var hamster in ViewBag.Hamsters)
+{
+<div class="container" id="product-section">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 style="font-size: 45px;" class="display-3">@hamster.Breed.Name</h1>
+            @{
+                var base64 = Convert.ToBase64String(hamster.Image);
+                var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <img src='@imgsrc' class="image-responsive" />
+        </div>
+        <div class="col-md-6">
+            <br />
+            <br />
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#description"
+                       aria-controls="description"
+                       role="tab"
+                       data-toggle="tab"
+                    >Id</a>
+                </li>
+                <li role="presentation">
+                    <a href="#features"
+                       aria-controls="features"
+                       role="tab"
+                       data-toggle="tab">Breed characteristics </a>
+                </li>
+                <li role="presentation">
+                    <a href="#notes"
+                       aria-controls="notes"
+                       role="tab"
+                       data-toggle="tab"
+                    >Potential food</a>
+                </li>
+                <li role="presentation">
+                    <a href="#reviews"
+                       aria-controls="reviews"
+                       role="tab"
+                       data-toggle="tab"
+                    >Cage</a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="description">
+                    <br />
+                    <p class="top-10">
+                        @hamster.Id
+                    </p>
+                </div>
+                <div role="tabpanel" class="tab-pane top-10" id="features">
+                    <br/>
+                    <p class="top-10"> Size: @hamster.Breed.Size</p>
+                    <p class="top-10"> Color: @hamster.Breed.Color</p>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="notes">
+                    @Html.Partial("_Food-Hamsters")
+                </div>
+                <div role="tabpanel" class="tab-pane" id="reviews">
+                    <br />
+                    @if (hamster.HasCage == true)
+                    {
+                        <p class="top-10">Yes</p>
+                    }
+                    else
+                    {
+                        <p class="top-10">No</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'" />
+    <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Hamsters", new {id = hamster.Id})'" />
+</div>
+    
+}

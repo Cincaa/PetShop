@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "New";
+}
+
+@model PetShop.Models.Location
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Locations", method: FormMethod.Post))
+{
+
+    @Html.Label("Name: ")
+    <br />
+    @Html.TextBoxFor(b => b.LocationType, null, new { placeholder = "Type in the location type", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.LocationType, "", new { @class = "text-danger" })
+    <br />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+}

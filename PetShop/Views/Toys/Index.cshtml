@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+<br />
+@foreach (var toy in ViewBag.Toys)
+{
+    <div style="max-width: 95%;" class="jumbotron">
+
+
+        <h1 style="font-size: 45px;" class="display-3">@toy.ProductName</h1>
+        @Html.Label("Id:")
+        <br />
+        <p style="font-size: 15px;">@toy.Id</p>
+        @if (toy.Hamster != null)
+        {
+            @Html.Label("Hamster: ")
+
+            <p style="font-size: 15px;">@toy.Hamster.Breed.Name</p>
+        }
+        
+        <br />
+
+        @if (ViewBag.Toys.Count > 1)
+        {
+            <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Toys", new {id = toy.Id})" role="button">Details</a>
+        }
+
+
+    </div>
+}
+
+
+<div style="position: absolute; right: 20px; top: 65px;">
+    <input type="button" class="btn btn-primary" value="Add a new Product" onclick="location.href = '@Url.Action("New", "Toys")'" />
+    <br />
+    <br />
+    @if (ViewBag.Toys.Count == 1)
+    {
+        foreach (var toy in ViewBag.Toys)
+        {
+            <input type="button" class="btn btn-primary" value="Edit breed" onclick="location.href = '@Url.Action("Edit", "Toys", new {id = toy.Id})'" />
+        }
+    }
+</div>
+
+</body>

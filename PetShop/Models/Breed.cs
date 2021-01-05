@@ -8,6 +8,7 @@ namespace PetShop.Models
 {
     public class Breed
     {
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
         public int BreedId { get; set; }
 
         [MinLength(3, ErrorMessage = "Breed name cannot be less than 3!"),

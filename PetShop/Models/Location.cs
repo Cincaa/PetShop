@@ -7,6 +7,7 @@ namespace PetShop.Models
     {
         [Column("Location_Id")]
         [Required]
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
         public int Id { get; set; }
 
         public string LocationType { get; set; }

@@ -169,6 +169,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ToysController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +194,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PetShopDB.mdf" />
+    <Content Include="App_Data\PetShopDB_log.ldf">
+      <DependentUpon>PetShopDB.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -236,7 +241,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Locations\Location.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Hamsters\New.cshtml" />
     <Content Include="Views\Shared\_Breed.cshtml" />
     <Content Include="Views\Shared\_Food-Hamsters.cshtml" />
@@ -270,6 +275,12 @@
     <Content Include="Views\Food\Index.cshtml" />
     <Content Include="Views\Food\New.cshtml" />
     <Content Include="Views\Food\Edit.cshtml" />
+    <Content Include="Views\Toys\Index.cshtml" />
+    <Content Include="Views\Toys\New.cshtml" />
+    <Content Include="Views\Toys\Edit.cshtml" />
+    <Content Include="Views\Locations\New.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Hamsters\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -284,9 +295,7 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101011454014_Initial.resx">
       <DependentUpon>202101011454014_Initial.cs</DependentUpon>

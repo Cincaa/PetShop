@@ -64,7 +64,9 @@ namespace PetShop.Controllers
             if (image1 != null)
             {
                 newHamster.Image = new byte[image1.ContentLength];
+                newHamster.Breed.Image = new byte[image1.ContentLength];
                 image1.InputStream.Read(newHamster.Image, 0, image1.ContentLength);
+                newHamster.Breed.Image = newHamster.Image;
             }
 
             try
@@ -123,6 +125,8 @@ namespace PetShop.Controllers
                         {
                             hamster.Image = new byte[image1.ContentLength];
                             image1.InputStream.Read(hamster.Image, 0, image1.ContentLength);
+                            hamster.Breed.Image = new byte[image1.ContentLength];
+                            hamster.Breed.Image = hamster.Image;
                         }
                         db.SaveChanges();
                     }
@@ -156,6 +160,22 @@ namespace PetShop.Controllers
             return HttpNotFound("Couldn't find the hamster with id " + id.ToString());
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id.HasValue)
+            {
+                Hamster hamster = db.Hamsters.Find(id);
+                List<Food> food = db.Food.ToList();
+                ViewBag.Hamsters = new List<Hamster>() { hamster };
+                ViewBag.Food = food;
+                if (hamster != null)
+                {
+                    return View(hamster);
+                }
+                return HttpNotFound("Couldn't find the hamster with id " + id.ToString() + "!");
+            }
+            return HttpNotFound("Missing hamster id parameter!");
+        }
         [NonAction]
         public IEnumerable<SelectListItem> GetAllSizes()
         {

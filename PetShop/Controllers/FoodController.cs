@@ -42,14 +42,14 @@ namespace PetShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(Hamster newFood)
+        public ActionResult New(Food newFood)
         {
 
             try
             {
                 if (ModelState.IsValid)
                 {
-                    db.Hamsters.Add(newFood);
+                    db.Food.Add(newFood);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }

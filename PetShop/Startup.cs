@@ -40,18 +40,25 @@ namespace PetShop
                     userManager.AddToRole(user.Id, "Admin");
                 }
             }
-            // ATENTIE !!! Pentru proiecte, pentru a adauga un rol nou trebuie sa adaugati secventa:
-            /*if (!roleManager.RoleExists("your_role_name"))
+            
+            if (!roleManager.RoleExists("Editor"))
             {
-            // adaugati rolul specific aplicatiei voastre
+            // adaug rolul specific aplicatiei
             var role = new IdentityRole();
-            role.Name = "your_role_name";
+            role.Name = "Editor";
             roleManager.Create(role);
             // se adauga utilizatorul
             var user = new ApplicationUser();
-            user.UserName = "your_user_email";
-            user.Email = "your_user_email";
-            }*/
+            user.UserName = "editor@editor.com";
+            user.Email = "editor@editor.com";
+
+            var editorCreated = userManager.Create(user, "Editor2020!");
+
+            if (editorCreated.Succeeded)
+            {
+                userManager.AddToRole(user.Id, "Editor");
+            }
+            }
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿@model PetShop.Models.Location
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>@ViewBag.Title</h2>
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Locations", method: FormMethod.Post))
+
+{
+    @Html.HttpMethodOverride(HttpVerbs.Put)
+    <!--camp ascuns pentru a retine id-ul obiectului-->
+    @Html.HiddenFor(b => b.Id)
+
+    <br />
+    @Html.Label("Location type", "Location type: ")
+    <br />
+    @Html.EditorFor(b => b.LocationType, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(b => b.LocationType, "", new { @class = "text-danger" })
+
+    
+    <button class="btn btn-primary" type="submit">Update</button>
+}
