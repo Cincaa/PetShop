@@ -35,6 +35,7 @@ namespace PetShop.Models
         [NotMapped]
         public IEnumerable<SelectListItem> ToysList { get; set; }
 
+
     }
 
 }

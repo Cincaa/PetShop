@@ -24,8 +24,7 @@
                     <a href="#description"
                        aria-controls="description"
                        role="tab"
-                       data-toggle="tab"
-                    >Id</a>
+                       data-toggle="tab">Id</a>
                 </li>
                 <li role="presentation">
                     <a href="#features"
@@ -37,15 +36,13 @@
                     <a href="#notes"
                        aria-controls="notes"
                        role="tab"
-                       data-toggle="tab"
-                    >Potential food</a>
+                       data-toggle="tab">Potential food</a>
                 </li>
                 <li role="presentation">
                     <a href="#reviews"
                        aria-controls="reviews"
                        role="tab"
-                       data-toggle="tab"
-                    >Cage</a>
+                       data-toggle="tab">Cage</a>
                 </li>
             </ul>
             <!-- Tab panes -->
@@ -57,7 +54,7 @@
                     </p>
                 </div>
                 <div role="tabpanel" class="tab-pane top-10" id="features">
-                    <br/>
+                    <br />
                     <p class="top-10"> Size: @hamster.Breed.Size</p>
                     <p class="top-10"> Color: @hamster.Breed.Color</p>
                 </div>
@@ -78,9 +75,10 @@
             </div>
         </div>
     </div>
-    <br/>
+    <br />
     <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'" />
     <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Hamsters", new {id = hamster.Id})'" />
+    <input type="button" class="btn btn-primary" value="Delete hamster" onclick="location.href = '@Url.Action("Delete", "Hamsters", new {id = hamster.Id})'" />
 </div>
     
 }

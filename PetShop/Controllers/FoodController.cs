@@ -106,7 +106,20 @@ namespace PetShop.Controllers
             }
         }
 
-
+        public ActionResult Details(int? id)
+        {
+            if (id.HasValue)
+            {
+                Food food = db.Food.Find(id);
+                ViewBag.Food = new List<Food>() { food };
+                if (food != null)
+                {
+                    return View(food);
+                }
+                return HttpNotFound("Couldn't find the product with id " + id.ToString() + "!");
+            }
+            return HttpNotFound("Missing product id parameter!");
+        }
 
         public ActionResult Delete(int id)
         {

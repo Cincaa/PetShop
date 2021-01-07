@@ -4,48 +4,54 @@
 }
 
 <body>
-<br />
-@foreach (var food in ViewBag.Food)
-{
-<div style="max-width: 95%;" class="jumbotron">
-
-
-    <h1 style="font-size: 45px;" class="display-3">@food.ProductName</h1>
-    @Html.Label("Id:")
-    <br />
-    <p style="font-size: 15px;">@food.Id</p>
-    @Html.Label("Diet?")
-    @if (food.Diet == true)
-    {
-        <p style="font-size: 15px;">Yes</p>
-    }
-    else
-    {
-        <p style="font-size: 15px;">No</p>
-    }
     <br />
 
-    @if (ViewBag.Food.Count > 1)
-    {
-        <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Food", new {id = food.Id})" role="button">Details</a>
-    }
-
-
-</div>
-}
-
-
-<div style="position: absolute; right: 20px; top: 65px;">
-    <input type="button" class="btn btn-primary" value="Add a new Product" onclick="location.href = '@Url.Action("New", "Food")'" />
-    <br />
-    <br />
-    @if (ViewBag.Food.Count == 1)
-    {
-        foreach (var food in ViewBag.Food)
+<table class="table table-striped table-dark ">
+    <thead>
+        <tr>
+            <th scope="col">#Id</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Diet</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var food in ViewBag.Food)
         {
-            <input type="button" class="btn btn-primary" value="Edit breed" onclick="location.href = '@Url.Action("Edit", "Food", new {id = food.Id})'" />
+            <tr>
+                <th scope="row">@food.Id</th>
+                <td>@food.ProductName</td>
+                @if (food.Diet == true)
+                {
+                    <td>Yes</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
+                <td>
+                    <div class="d-flex flex-row-reverse">
+                        @if (ViewBag.Food.Count > 1)
+                        {
+                            <div class="p-2">
+                                <a class="stretched-link"  href="@Url.Action("Details", "Food", new {id = food.Id})" role="button"> Details</a>
+                            </div>
+                        }
+                        <div class="p-2">
+                            <a class="stretched-link"  onclick="location.href = '@Url.Action("New", "Food")'" role="button"> Add a new Product </a>
+                        </div>
+                        <div class="p-2">
+                            <a class="stretched-link"  href="@Url.Action("Edit", "Food", new {id = food.Id})" role="button"> Edit product </a>
+                        </div>
+                        <div class="p-2">
+                            <a class="stretched-link" href="@Url.Action("Delete", "Food", new {id = food.Id})" role="button"> Delete product </a>
+                        </div>
+                        </div>
+                </td>
+                
+            </tr>
         }
-    }
-</div>
+    </tbody>
+    </table>
 
 </body>

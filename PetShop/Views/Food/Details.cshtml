@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+@foreach (var food in ViewBag.Food)
+{
+    <div class="container" id="product-section">
+        <div class="row">
+            
+                <h1 style="font-size: 45px;" class="display-3">@food.ProductName</h1>
+                
+            
+            <div class="col-md-6">
+                <br />
+                <br />
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#description"
+                           aria-controls="description"
+                           role="tab"
+                           data-toggle="tab">Id</a>
+                    </li>
+                    
+                    <li role="presentation">
+                        <a href="#notes"
+                           aria-controls="notes"
+                           role="tab"
+                           data-toggle="tab">Diet</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#reviews"
+                           aria-controls="reviews"
+                           role="tab"
+                           data-toggle="tab">Suitable for</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="description">
+                        <br />
+                        <p class="top-10">
+                            @food.Id
+                        </p>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="notes">
+                        <br />
+                        @if (food.Diet == true)
+                        {
+                            <p class="top-10"> Yes</p>
+                        }
+                        else
+                        {
+                            <p class="top-10"> No</p>
+                        }
+                    </div>
+                    @if (food.Hamsters != null)
+                    {
+                        <div role="tabpanel" class="tab-pane" id="reviews">
+                            <br />
+                            <p class="top-10"> @food.Hamsters.ToString()</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div role="tabpanel" class="tab-pane" id="reviews">
+                            <br />
+                            <p class="top-10"> Currently, this product it is not in use</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Food")'" />
+        <input type="button" class="btn btn-primary" value="Edit hamster" onclick="location.href = '@Url.Action("Edit", "Food", new {id = food.Id})'" />
+        <input type="button" class="btn btn-primary" value="Delete hamster" onclick="location.href = '@Url.Action("Delete", "Food", new {id = food.Id})'" />
+    </div>
+
+}
+
