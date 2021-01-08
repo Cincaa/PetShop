@@ -57,12 +57,14 @@ namespace PetShop.Migrations
             ctx.Locations.Add(new Location
             {
                 Id = 1,
+                LocationType = "Classic",
                 Address = new Address
                 {
                     Id = 1,
                     City = "Bucharest",
                     Street = "Ciobanasului",
-                    Number = 65
+                    Number = 65,
+                    PostalCode = 610192
                 }
             });
 

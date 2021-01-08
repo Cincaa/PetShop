@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+@foreach (var toy in ViewBag.Toys)
+{
+    <div class="container" id="product-section">
+        <div class="row">
+
+            <h1 style="font-size: 45px;" class="display-3">@toy.ProductName</h1>
+
+
+            <div class="col-md-6">
+                <br />
+                <br />
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#description"
+                           aria-controls="description"
+                           role="tab"
+                           data-toggle="tab">Id</a>
+                    </li>
+
+                    @* <li role="presentation"> *@
+                    @*     <a href="#notes" *@
+                    @*        aria-controls="notes" *@
+                    @*        role="tab" *@
+                    @*        data-toggle="tab">Diet</a> *@
+                    @* </li> *@
+                    @* <li role="presentation"> *@
+                    @*     <a href="#reviews" *@
+                    @*        aria-controls="reviews" *@
+                    @*        role="tab" *@
+                    @*        data-toggle="tab">Suitable for</a> *@
+                    @* </li> *@
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="description">
+                        <br />
+                        <p class="top-10">
+                            @toy.Id
+                        </p>
+                    </div>
+
+@*                     <div role="tabpanel" class="tab-pane" id="notes"> *@
+@*                         <br /> *@
+@*                         @if (food.Diet == true) *@
+@*                         { *@
+@*                             <p class="top-10"> Yes</p> *@
+@*                         } *@
+@*                         else *@
+@*                         { *@
+@*                             <p class="top-10"> No</p> *@
+@*                         } *@
+@*                     </div> *@
+                    @if (toy.Hamster != null)
+                    {
+                        <div role="tabpanel" class="tab-pane" id="reviews">
+                            <br />
+                            <p class="top-10"> @toy.Hamster.Breed.Name</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div role="tabpanel" class="tab-pane" id="reviews">
+                            <br />
+                            <p class="top-10"> Currently, this product it is not in use</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <br />
+        <input type="button" class="btn btn-primary" value="Add a new toy" onclick="location.href = '@Url.Action("New", "Toys")'" />
+        <input type="button" class="btn btn-primary" value="Edit toy" onclick="location.href = '@Url.Action("Edit", "Toys", new {id = toy.Id})'" />
+        <input type="button" class="btn btn-primary" value="Delete toy" onclick="location.href = '@Url.Action("Delete", "Toys", new {id = toy.Id})'" />
+    </div>
+
+}

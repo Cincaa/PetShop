@@ -4,45 +4,44 @@
 
 <body>
 <br />
-@foreach (var toy in ViewBag.Toys)
-{
-    <div style="max-width: 95%;" class="jumbotron">
 
-
-        <h1 style="font-size: 45px;" class="display-3">@toy.ProductName</h1>
-        @Html.Label("Id:")
-        <br />
-        <p style="font-size: 15px;">@toy.Id</p>
-        @if (toy.Hamster != null)
-        {
-            @Html.Label("Hamster: ")
-
-            <p style="font-size: 15px;">@toy.Hamster.Breed.Name</p>
-        }
-        
-        <br />
-
-        @if (ViewBag.Toys.Count > 1)
-        {
-            <a class="btn btn-primary btn-lg" href="@Url.Action("Index", "Toys", new {id = toy.Id})" role="button">Details</a>
-        }
-
-
-    </div>
-}
-
-
-<div style="position: absolute; right: 20px; top: 65px;">
-    <input type="button" class="btn btn-primary" value="Add a new Product" onclick="location.href = '@Url.Action("New", "Toys")'" />
-    <br />
-    <br />
-    @if (ViewBag.Toys.Count == 1)
+<table class="table table-striped table-dark ">
+    <thead>
+    <tr>
+        <th scope="col">#Id</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var toy in ViewBag.Toys)
     {
-        foreach (var toy in ViewBag.Toys)
-        {
-            <input type="button" class="btn btn-primary" value="Edit breed" onclick="location.href = '@Url.Action("Edit", "Toys", new {id = toy.Id})'" />
-        }
+        <tr>
+            <th scope="row">@toy.Id</th>
+            <td>@toy.ProductName</td>
+            
+            <td>
+                <div class="d-flex flex-row-reverse">
+                        
+                    <div class="p-2">
+                        <a class="stretched-link"  href="@Url.Action("Details", "Toys", new {id = toy.Id})" role="button"> Details</a>
+                    </div>
+                        
+                    <div class="p-2">
+                        <a class="stretched-link"  onclick="location.href = '@Url.Action("New", "Toys")'" role="button"> Add a new Product </a>
+                    </div>
+                    <div class="p-2">
+                        <a class="stretched-link"  href="@Url.Action("Edit", "Toys", new {id = toy.Id})" role="button"> Edit product </a>
+                    </div>
+                    <div class="p-2">
+                        <a class="stretched-link" href="@Url.Action("Delete", "Toys", new {id = toy.Id})" role="button"> Delete product </a>
+                    </div>
+                </div>
+            </td>
+                
+        </tr>
     }
-</div>
+    </tbody>
+</table>
 
 </body>

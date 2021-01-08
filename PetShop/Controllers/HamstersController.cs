@@ -12,11 +12,8 @@ namespace PetShop.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Hamsters
 
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-        }
 
+        [AllowAnonymous]
         public ActionResult Index(int? id)
         {
 
@@ -45,21 +42,25 @@ namespace PetShop.Controllers
                 return View();
             }
         }
-
+        [Authorize(Roles = "Admin, Editor")]
         [HttpGet]
         public ActionResult New()
         {
             Hamster hamster = new Hamster();
             hamster.BreedSizeList = GetAllSizes();
             hamster.BreedColorList = GetAllColors();
+            hamster.ToysList = GetAllToys();
+            hamster.FoodList = GetAllFood();
+            hamster.Food = new List<Food>();
             return View(hamster);
         }
-
+        [Authorize(Roles = "Admin, Editor")]
         [HttpPost]
         public ActionResult New(Hamster newHamster, HttpPostedFileBase image1)
         {
             newHamster.BreedSizeList = GetAllSizes();
             newHamster.BreedColorList = GetAllColors();
+            newHamster.ToysList = GetAllToys();
 
             if (image1 != null)
             {
@@ -68,6 +69,8 @@ namespace PetShop.Controllers
                 image1.InputStream.Read(newHamster.Image, 0, image1.ContentLength);
                 newHamster.Breed.Image = newHamster.Image;
             }
+
+            var selectedGenres =newHamster.FoodList.Where(b => b.Checked).ToList();
 
             try
             {
@@ -87,6 +90,7 @@ namespace PetShop.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
 
@@ -95,6 +99,15 @@ namespace PetShop.Controllers
                 Hamster hamster = db.Hamsters.Find(id);
                 hamster.BreedSizeList = GetAllSizes();
                 hamster.BreedColorList = GetAllColors();
+                hamster.FoodList = GetAllFood();
+
+                foreach (Food checkedFood in hamster.Food)
+                {   
+                    // iteram prin genurile care erau atribuite cartii inainte de momentul accesarii formularului
+                    // si le selectam/bifam  in lista de checkbox-uri
+                    hamster.FoodList.FirstOrDefault(g => g.Id == checkedFood.Id).Checked = true;
+                }
+
                 if (hamster == null)
                 {
                     return HttpNotFound("Couldn't find the hamster with id " + id.ToString());
@@ -106,6 +119,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int id, Hamster hamsterRequest, HttpPostedFileBase image1)
         {
             try
@@ -140,8 +154,8 @@ namespace PetShop.Controllers
             }
         }
 
-        
-        
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Hamster hamster = db.Hamsters.Find(id);
@@ -159,7 +173,7 @@ namespace PetShop.Controllers
             }
             return HttpNotFound("Couldn't find the hamster with id " + id.ToString());
         }
-
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id.HasValue)
@@ -232,6 +246,34 @@ namespace PetShop.Controllers
             return selectList;
         }
 
-      
+        [NonAction]
+        public IEnumerable<SelectListItem> GetAllToys()
+        {
+            var selectList = new List<SelectListItem>();
+            foreach (var toy in db.Toys.ToList())
+            {
+                selectList.Add(new SelectListItem
+                {
+                    Value = toy.ProductName,
+                    Text = toy.ProductName
+                });
+            }
+            return selectList;
+        }
+        [NonAction]
+        public List<CheckBoxViewModel> GetAllFood()
+        {
+            var checkboxList = new List<CheckBoxViewModel>();
+            foreach (var food in db.Food.ToList())
+            {
+                checkboxList.Add(new CheckBoxViewModel
+                {
+                    Id = food.Id,
+                    Name = food.ProductName,
+                    Checked = false
+                });
+            }
+            return checkboxList;
+        }
     }
 }

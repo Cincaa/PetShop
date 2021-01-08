@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Details";
+}
+
+
+@foreach (var location in ViewBag.Locations)
+{
+    <div class="container" id="product-section">
+        <div class="row">
+
+            <h1 style="font-size: 45px;" class="display-3">@location.LocationType</h1>
+
+
+            <div class="col-md-6">
+                <br />
+                <br />
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#description"
+                           aria-controls="description"
+                           role="tab"
+                           data-toggle="tab">Id</a>
+                    </li>
+
+                    <li role="presentation">
+                        <a href="#notes"
+                           aria-controls="notes"
+                           role="tab"
+                           data-toggle="tab">Location type</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#reviews"
+                           aria-controls="reviews"
+                           role="tab"
+                           data-toggle="tab">City</a>
+                    </li>
+
+                    <li role="presentation">
+                        <a href="#street"
+                           aria-controls="reviews"
+                           role="tab"
+                           data-toggle="tab">Street</a>
+                    </li>
+
+                    <li role="presentation">
+                        <a href="#number"
+                           aria-controls="reviews"
+                           role="tab"
+                           data-toggle="tab">Number</a>
+                    </li>
+
+                    <li role="presentation">
+                        <a href="#postal"
+                           aria-controls="reviews"
+                           role="tab"
+                           data-toggle="tab">Postal code</a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="description">
+                        <br />
+                        <p class="top-10">
+                            @location.Id
+                        </p>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="notes">
+                        <br />
+
+                        <p class="top-10"> @location.LocationType</p>
+
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="reviews">
+                        <br />
+                        <p class="top-10"> @location.Address.City</p>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="street">
+                        <br />
+                        <p class="top-10"> @location.Address.Street</p>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="number">
+                        <br />
+                        <p class="top-10"> @location.Address.Number</p>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane" id="postal">
+                        <br />
+                        <p class="top-10"> @location.Address.PostalCode</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <input type="button" class="btn btn-primary" value="Add a new product" onclick="location.href = '@Url.Action("New", "Locations")'" />
+        <input type="button" class="btn btn-primary" value="Edit product" onclick="location.href = '@Url.Action("Edit", "Locations", new {id = location.Id})'" />
+        <input type="button" class="btn btn-primary" value="Delete product" onclick="location.href = '@Url.Action("Delete", "Locations", new {id = location.Id})'" />
+    </div>
+
+}
+

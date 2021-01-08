@@ -31,12 +31,11 @@
                 }
                 <td>
                     <div class="d-flex flex-row-reverse">
-                        @if (ViewBag.Food.Count > 1)
-                        {
-                            <div class="p-2">
+                        
+                        <div class="p-2">
                                 <a class="stretched-link"  href="@Url.Action("Details", "Food", new {id = food.Id})" role="button"> Details</a>
-                            </div>
-                        }
+                        </div>
+                        
                         <div class="p-2">
                             <a class="stretched-link"  onclick="location.href = '@Url.Action("New", "Food")'" role="button"> Add a new Product </a>
                         </div>

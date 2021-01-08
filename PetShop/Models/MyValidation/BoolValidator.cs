@@ -14,7 +14,7 @@ namespace PetShop.Models.MyValidation
                 cond = false;
             }
 
-            return cond ? ValidationResult.Success : new ValidationResult("This is not a bool number!");
+            return cond ? ValidationResult.Success : new ValidationResult("This is not a bool!");
         }
 
     }

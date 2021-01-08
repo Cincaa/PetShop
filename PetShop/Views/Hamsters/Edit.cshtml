@@ -32,6 +32,16 @@
     @Html.ValidationMessageFor(b => b.Breed.Color, "", new { @class = "text-danger" })
     <br />
 
+    for (int i = 0; i < Model.FoodList.Count(); i++)
+    {
+         @Html.HiddenFor(b => b.FoodList[i].Id)
+         @Html.HiddenFor(b => b.FoodList[i].Name)
+         @Html.CheckBoxFor(b => b.FoodList[i].Checked)
+         @Html.DisplayFor(b => b.FoodList[i].Name)
+         <br />
+      }
+     <br />
+
     <input type="file" id="image1" name="image1" />
     <br />
     <button class="btn btn-primary" type="submit">Update</button>

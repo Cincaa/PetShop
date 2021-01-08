@@ -14,7 +14,13 @@ namespace PetShop.Models
         [MinLength(3, ErrorMessage = "Breed name cannot be less than 3!"),
          MaxLength(20, ErrorMessage = "Breed name cannot be more than 20!")]
         public string Name { get; set; }
+
+        [MinLength(3, ErrorMessage = "Breed size cannot be less than 3!"),
+         MaxLength(20, ErrorMessage = "Breed size cannot be more than 20!")]
         public string Size { get; set; }
+
+        [MinLength(3, ErrorMessage = "Breed color cannot be less than 3!"),
+         MaxLength(20, ErrorMessage = "Breed color cannot be more than 20!")]
         public string Color { get; set; }
         public byte[] Image { get; set; }
         public virtual IEnumerable<Hamster> Hamsters { get; set; }

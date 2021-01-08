@@ -14,6 +14,7 @@ namespace PetShop.Controllers
         public ActionResult Index()
         {
             List<Location> locations = db.Locations.ToList();
+            List<Address> addresses = db.Addresses.ToList();
             ViewBag.Locations = locations;
             return View();
         }
@@ -90,7 +91,24 @@ namespace PetShop.Controllers
             }
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id.HasValue)
+            {
+                Location location = db.Locations.Find(id);
+                ViewBag.Locations = new List<Location>() { location };
 
+                List<Address> addresses = db.Addresses.ToList();
+                ViewBag.Addresses = addresses;
+
+                if (location != null)
+                {
+                    return View(location);
+                }
+                return HttpNotFound("Couldn't find the location with id " + id.ToString() + "!");
+            }
+            return HttpNotFound("Missing location id parameter!");
+        }
 
         public ActionResult Delete(int id)
         {

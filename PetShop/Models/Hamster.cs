@@ -25,6 +25,7 @@ namespace PetShop.Models
         public virtual List<Food> Food { get; set; }
 
         //one-to-many
+        public int ToyId { get; set; }
         public virtual List<Toy> Toys { get; set; }
 
         public byte[] Image { get; set; }
@@ -34,7 +35,9 @@ namespace PetShop.Models
         public IEnumerable<SelectListItem> BreedColorList { get; set; }
         [NotMapped]
         public IEnumerable<SelectListItem> ToysList { get; set; }
-
+        
+        [NotMapped]
+        public List<CheckBoxViewModel> FoodList { get; set; }
 
     }
 
