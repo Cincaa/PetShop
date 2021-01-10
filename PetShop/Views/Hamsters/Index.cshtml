@@ -59,7 +59,7 @@
 
 <div style="position: absolute; right: 1px; top: 65px;">
     
-    <input type="button" class="btn btn-primary" value="Add a new hamster" onclick="location.href = '@Url.Action("New", "Hamsters")'"/>
+    <input type="button" class="btn btn-primary" value="Add a new hamster" style=" max-width: 150px;"onclick="location.href = '@Url.Action("New", "Hamsters")'"/>
     @foreach (var hamster in ViewBag.Hamsters)
     {
         if (ViewBag.Hamsters.Count == 1)

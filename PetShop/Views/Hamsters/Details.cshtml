@@ -13,7 +13,7 @@
                 var base64 = Convert.ToBase64String(hamster.Image);
                 var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
             }
-            <img src='@imgsrc' class="image-responsive" />
+            <img src='@imgsrc' class="image-responsive" style ="max-width:500px; min-width: 400px; max-width:600px; max-height:415px;"/>
         </div>
         <div class="col-md-6">
             <br />

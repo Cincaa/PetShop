@@ -9,7 +9,7 @@ namespace PetShop.Models
         [Required]
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
         public int Id { get; set; }
-
+        [RegularExpression("([a-zA-Z-]+)")]
         public string LocationType { get; set; }
 
         //one-to-one

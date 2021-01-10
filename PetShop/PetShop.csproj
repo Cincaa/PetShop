@@ -189,6 +189,7 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MyValidation\BoolValidator.cs" />
+    <Compile Include="Models\MyValidation\PostalCodeValidator.cs" />
     <Compile Include="Models\Toy.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

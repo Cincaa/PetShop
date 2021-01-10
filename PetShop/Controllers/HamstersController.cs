@@ -70,7 +70,6 @@ namespace PetShop.Controllers
                 newHamster.Breed.Image = newHamster.Image;
             }
 
-            var selectedGenres =newHamster.FoodList.Where(b => b.Checked).ToList();
 
             try
             {
@@ -252,11 +251,14 @@ namespace PetShop.Controllers
             var selectList = new List<SelectListItem>();
             foreach (var toy in db.Toys.ToList())
             {
-                selectList.Add(new SelectListItem
+                if(toy.ProductName != null)
                 {
-                    Value = toy.ProductName,
-                    Text = toy.ProductName
-                });
+                    selectList.Add(new SelectListItem
+                    {
+                        Value = toy.ProductName,
+                        Text = toy.ProductName
+                    });
+                }
             }
             return selectList;
         }

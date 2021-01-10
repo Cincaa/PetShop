@@ -6,7 +6,7 @@
 
 @using (Html.BeginForm(actionName: "New", controllerName: "Food", method: FormMethod.Post))
 {
-
+    <br/>
     @Html.Label("Name: ")
     <br />
     @Html.TextBoxFor(b => b.ProductName, null, new { placeholder = "Type in the hamster's breed name", @class = "form-control" })

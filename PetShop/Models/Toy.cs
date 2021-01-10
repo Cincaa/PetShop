@@ -6,6 +6,7 @@ namespace PetShop.Models
     {
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]
         public int Id { get; set; }
+        [RegularExpression("([a-zA-Z-+]+)")]
         public string ProductName { get; set; }
         
         public Hamster Hamster { get; set; }

@@ -6,11 +6,35 @@
 
 @using (Html.BeginForm(actionName: "New", controllerName: "Locations", method: FormMethod.Post))
 {
-
-    @Html.Label("Name: ")
+    <br />
+    @Html.Label("Location type: ")
     <br />
     @Html.TextBoxFor(b => b.LocationType, null, new { placeholder = "Type in the location type", @class = "form-control" })
     @Html.ValidationMessageFor(b => b.LocationType, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("City: ")
+    <br />
+    @Html.TextBoxFor(b => b.Address.City, null, new { placeholder = "Type in the location type", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Address.City, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Street: ")
+    <br />
+    @Html.TextBoxFor(b => b.Address.Street, null, new { placeholder = "Type in the location type", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Address.Street, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Number: ")
+    <br />
+    @Html.TextBoxFor(b => b.Address.Number, null, new { placeholder = "Type in the location type", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Address.Number, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Postal Code: ")
+    <br />
+    @Html.TextBoxFor(b => b.Address.PostalCode, null, new { placeholder = "Type in the location type", @class = "form-control" })
+    @Html.ValidationMessageFor(b => b.Address.PostalCode, "", new { @class = "text-danger" })
     <br />
 
     <button class="btn btn-primary" type="submit">Create</button>

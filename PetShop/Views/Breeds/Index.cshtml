@@ -35,17 +35,21 @@
     }
 
 
-    <div style="position: absolute; right: 20px; top: 65px;">
-        <input type="button" class="btn btn-primary" value="Add a new breed" onclick="location.href = '@Url.Action("New", "Breeds")'" />
-        <br />
-        <br />
-        @if (ViewBag.Breeds.Count == 1)
+<div style="position: absolute; right: 20px; top: 65px;">
+    <input type="button" class="btn btn-primary" value="Add a new breed" onclick="location.href = '@Url.Action("New", "Breeds")'" />
+    <br />
+    <br />
+    @if (ViewBag.Breeds.Count == 1)
+    {
+        foreach (var breed in ViewBag.Breeds)
         {
-            foreach (var breed in ViewBag.Breeds)
-            {
-                <input type="button" class="btn btn-primary" value="Edit breed" onclick="location.href = '@Url.Action("Edit", "Breeds", new {id = breed.BreedId})'" />
-            }
+            <input type="button" class="btn btn-primary" value="Edit breed" onclick="location.href = '@Url.Action("Edit", "Breeds", new {id = breed.BreedId})'" />
+            <br/>
+            <br/>
+            <input type="button" class="btn btn-primary" value="Delete breed" onclick="location.href = '@Url.Action("Delete", "Breeds", new {id = breed.BreedId})'" />
+
         }
-    </div>
+    }
+</div>
 
 </body>
