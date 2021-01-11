@@ -12,6 +12,7 @@ namespace PetShop.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Hamsters
 
+        [AllowAnonymous]
         public ActionResult Index(int? id)
         {
 
@@ -35,6 +36,7 @@ namespace PetShop.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New()
         {
             Food food = new Food();
@@ -42,6 +44,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New(Food newFood)
         {
 
@@ -62,6 +65,7 @@ namespace PetShop.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
 
@@ -80,6 +84,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int id, Food foodRequest)
         {
             try
@@ -106,6 +111,7 @@ namespace PetShop.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id.HasValue)
@@ -121,6 +127,7 @@ namespace PetShop.Controllers
             return HttpNotFound("Missing product id parameter!");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Food food = db.Food.Find(id);

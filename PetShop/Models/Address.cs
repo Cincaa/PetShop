@@ -14,7 +14,7 @@ namespace PetShop.Models
 
         [RegularExpression("([a-zA-Z-]+)")]
         public string City { get; set; }
-        [RegularExpression("([a-zA-Z.]+)")]
+        [RegularExpression("([a-zA-Z. ]+)")]
         public string Street { get; set; }
         
         [Range(0, int.MaxValue, ErrorMessage = "Please enter valid integer Number")]

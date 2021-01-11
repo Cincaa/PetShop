@@ -11,6 +11,7 @@ namespace PetShop.Controllers
         // GET: Locations
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [AllowAnonymous]
         public ActionResult Index()
         {
             List<Location> locations = db.Locations.ToList();
@@ -21,6 +22,7 @@ namespace PetShop.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New()
         {
             Location location = new Location();
@@ -28,6 +30,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New(Location newLocation)
         {
 
@@ -48,6 +51,7 @@ namespace PetShop.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
 
@@ -66,6 +70,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int id, Location locationRequest)
         {
             try
@@ -91,6 +96,7 @@ namespace PetShop.Controllers
             }
         }
 
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id.HasValue)
@@ -110,6 +116,7 @@ namespace PetShop.Controllers
             return HttpNotFound("Missing location id parameter!");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Location location = db.Locations.Find(id);

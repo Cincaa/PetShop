@@ -11,6 +11,7 @@ namespace PetShop.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [AllowAnonymous]
         public ActionResult Index(int? id)
         {
             if (!id.HasValue)
@@ -30,6 +31,7 @@ namespace PetShop.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New()
         {
             Breed breed = new Breed();
@@ -39,6 +41,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New(Breed newBreed, HttpPostedFileBase image2)
         {
             newBreed.BreedSizeList = GetAllSizes();
@@ -69,6 +72,7 @@ namespace PetShop.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
 
@@ -88,6 +92,7 @@ namespace PetShop.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int id, Breed breedRequest, HttpPostedFileBase image2)
         {
             try
@@ -120,7 +125,7 @@ namespace PetShop.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Breed breed = db.Breeds.Find(id);
