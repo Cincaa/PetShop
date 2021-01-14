@@ -37,7 +37,7 @@
 
             @foreach (var hamster in ViewBag.Hamsters)
             {
-                
+
                 var base64 = Convert.ToBase64String(hamster.Image);
                 var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
                 <div class="col-sm-4">
@@ -47,7 +47,7 @@
                             <img src='@imgsrc' class="img-responsive" style="width: 100%; height: 250px;" alt="Image">
                         </div>
                         <div class="panel-footer">
-                            <a class="btn btn-primary btn-lg btn-block"  href="@Url.Action("Details", "Hamsters", new {id = hamster.Id})" role="button">Details</a>
+                            <a class="btn btn-primary btn-lg btn-block" href="@Url.Action("Details", "Hamsters", new {id = hamster.Id})" role="button">Details</a>
                         </div>
                     </div>
                 </div>
